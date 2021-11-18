@@ -3,8 +3,8 @@ package javapractise;
 import java.time.LocalDate;
 
 public class Employee {
-	   int id;
-	   String name;
+       int id;
+       String name;
        String gender;
        double basic_pay;
        LocalDate start;
@@ -35,8 +35,6 @@ public class Employee {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	
-	
 	public double getBasic_pay() {
 		return basic_pay;
 	}
