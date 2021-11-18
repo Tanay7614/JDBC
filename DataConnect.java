@@ -8,27 +8,27 @@ import java.util.Enumeration;
 
 public class DataConnect {
       
-	        public static Connection createC() {
+	        public static Connection createC()
+		{
 		    String jdbcurl = "jdbc:mysql://localhost:3306/payroll_services";
-			String username="root";
+		    String username="root";
 		    String passWord="Tanaybr7614";
 		    Connection con = null;
 		
-		try {
+		   try {
 				Class.forName("com.mysql.jdbc.Driver");
 				System.out.println("Driver loaded successfully");
 				con=DriverManager.getConnection(jdbcurl, username,passWord);
 				System.out.println("Connection is succesful "+con);
-		    } catch (Exception e)
-		    {
+		       }           catch (Exception e)
+		       {
 				e.printStackTrace();
-		    }
+		       }
 		
 		
-		listdriver();
-		return con;
-		
-	}
+		       listdriver();
+		       return con;
+		}
 		private static void listdriver()
 		{
 			Enumeration<Driver> driverList=DriverManager.getDrivers();
@@ -38,4 +38,4 @@ public class DataConnect {
 				System.out.println(" "+driverClass.getClass().getName());
 			}
 		}
-}
+    }
