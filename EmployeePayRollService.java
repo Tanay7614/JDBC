@@ -8,20 +8,19 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeePayRollService {
-	
+public class EmployeePayRollService 
+    {
 	 List< Employee> list=new ArrayList<>();
 
-	public List<Employee> retriveData() 
-	{
-	  
+	 public List<Employee> retriveData() 
+	 {
 	   String sql="select * from employee_payrolls";
-	  
 	   try {
 		   Connection con1 = DataConnect.createC();
 		   Statement  statement=con1.createStatement();
 		   ResultSet result=statement.executeQuery(sql);
-		   while( result.next()) {
+		   while( result.next())
+		   {
 			   int id=result.getInt("id");
 			   String name=result.getString("name");
 			   String gender=result.getString("gender");
@@ -29,26 +28,12 @@ public class EmployeePayRollService {
 			   LocalDate start=result.getDate("start").toLocalDate();
 			   list.add(new Employee(id,name,gender,basic_pay,start));
 			   System.out.println(list);		 
-			   }
+		   }
 	} catch (SQLException e) {
 		
 		e.printStackTrace();
 	}
 	  return list;
 	   
-	}
-
-//	public void update() {
-//		String sql="update employee_payrolls set salary=3000000 where name='charlie'";
-//		Connection con1 = StudentDao.insertDB();
-//		try {
-//			Statement  statement=con1.createStatement();
-//			statement.executeUpdate(sql);
-//		} catch (SQLException e) {
-//			
-//			e.printStackTrace();
-//		}
-//		
-		
-//	}
+	}	
 }
