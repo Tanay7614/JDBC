@@ -12,9 +12,8 @@ public class EmployeePayRollService {
 	
 	 List< Employee> list=new ArrayList<>();
 
-	public List<Employee> retriveData() 
-	{
-	  
+	 public List<Employee> retriveData() 
+	 {
 	   String sql="select * from employee_payrolls";
 	  
 	   try {
@@ -33,11 +32,11 @@ public class EmployeePayRollService {
 			   		 
 		   }
 		   con1.close();
-	} catch (SQLException e) {
-		
-		e.printStackTrace();
-	}
-	  return list;
+	       }   catch (SQLException e)
+	       {
+		   e.printStackTrace();
+	       }
+	   return list;
 	   
 	}
 
@@ -50,12 +49,12 @@ public class EmployeePayRollService {
 			statement.executeUpdate(sql);
 			System.out.println(list);	
 			con1.close();
-		} 
+		    } 
 		
-		catch (SQLException e) {
-			
-			e.printStackTrace();
-		}
+		    catch (SQLException e)
+		    {
+			   e.printStackTrace();
+		    }
 		
 	}
 }
