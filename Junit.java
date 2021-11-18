@@ -7,19 +7,13 @@ import org.junit.Test;
 
 
 
-public class Junit {
+public class Junit
+{
 	@Test
 	public void retriveDataFromDB()
 	{
 		EmployeePayRollService employeePayRollService=new EmployeePayRollService();
 		List<Employee> ep = employeePayRollService.retriveData();
 		Assert.assertEquals(6, ep.size());
-	}
-//	@Test
-//	public void updateSalaryFromDB()
-//	{
-//		EmployeePayRollService employeePayRollService=new EmployeePayRollService();
-//	    employeePayRollService.update();
-//		
-//	}
+	}	
 }
