@@ -13,8 +13,8 @@ public class EmployeePayRollService {
 	
 	 List< Employee> list=new ArrayList<>();
 
-	public List<Employee> retriveData() 
-	{
+	 public List<Employee> retriveData() 
+	 {
 	  
 	   String sql="select * from employee_payrolls";
 	  
@@ -33,12 +33,11 @@ public class EmployeePayRollService {
 			   list.add(new Employee(id,name,gender,basic_pay,start));
 			   		 
 		   }
-		   con1.close();
-	} catch (SQLException e) {
-		
-		e.printStackTrace();
-	}
-	  return list;
+		           con1.close();
+	      }            catch (SQLException e) {
+		           e.printStackTrace();
+	      }
+	      return list;
 	   
 	}
 
@@ -68,12 +67,14 @@ public class EmployeePayRollService {
 			PreparedStatement psmt=con1.prepareStatement(sql);
 			psmt.setString(1, name);
 			int result=psmt.executeUpdate();
-			if(result==1) {
+			if(result==1)
+			{
 				System.out.println("Update Succesfully!");
 			}
 		    } 
 		
-		catch (SQLException e) {
+	        catch (SQLException e) 
+		{
 			
 			e.printStackTrace();
 		}
