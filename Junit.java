@@ -20,8 +20,7 @@ public class Junit {
 	{
 		EmployeePayRollService employeePayRollService=new EmployeePayRollService();
 		List<Employee> ep = employeePayRollService.retriveData();
-	    employeePayRollService.update();
-		
+	        employeePayRollService.update();
 	}
 	@Test
 	public void updateSalaryFromDBusing_prepareStatement() {
@@ -44,13 +43,13 @@ public class Junit {
 	@Test
 	public void add_new_employeeuc7() {
 		EmployeePayRollService employeePayRollService=new EmployeePayRollService();
-	    employeePayRollService.retriveData();
-	    employeePayRollService.add_new_employee_to_the_Databaseuc7("Raunak","M",520000.00,LocalDate.now());
+	        employeePayRollService.retriveData();
+	        employeePayRollService.add_new_employee_to_the_Databaseuc7("Raunak","M",520000.00,LocalDate.now());
 	}
 	@Test
 	public void add_new_employee() {
 		EmployeePayRollService employeePayRollService=new EmployeePayRollService();
-	    employeePayRollService.retriveData();
-	    employeePayRollService.add_new_employee_to_the_Database("Raunak","M",520000.00,LocalDate.now());
+	        employeePayRollService.retriveData();
+	        employeePayRollService.add_new_employee_to_the_Database("Raunak","M",520000.00,LocalDate.now());
 	}
 }
