@@ -18,15 +18,11 @@ public class EmployeePayRollService {
 	List<Employee> list=new ArrayList<>();
 	public List<Employee> retriveData() 
 	{
-	  
 	   String sql="select * from employee_payrolls";
-	  
-	  
 	   try {
 		   Connection con1 = DataConnect.createC();
 		   Statement  statement=con1.createStatement();
 		   ResultSet result=statement.executeQuery(sql);
-		  
 		   while( result.next())
 		   {
 			   int id=result.getInt("id");
@@ -35,15 +31,13 @@ public class EmployeePayRollService {
 			   double basic_pay=result.getDouble("basic_pay");
 			   LocalDate start=result.getDate("start").toLocalDate();
 			   list.add(new Employee(id,name,gender,basic_pay,start));
-			   		 
-		   }
-		   con1.close();
-	} catch (SQLException e) {
+	           }
+		           con1.close();
+	        }          catch (SQLException e) {
 		
-		e.printStackTrace();
+		           e.printStackTrace();
 	}
 	  return list;
-	   
 	}
 	
 	public void add_new_employee_to_the_Database(String name, String gender, double basic_pay, LocalDate startDate) {
@@ -103,8 +97,7 @@ public class EmployeePayRollService {
 				System.out.println("Update Succesfully!");
 			}
 		    } 
-		
-		catch (SQLException e) {
+	            catch (SQLException e) {
 			
 			e.printStackTrace();
 		}
@@ -116,8 +109,7 @@ public class EmployeePayRollService {
 		
 		List< Employee> list=new ArrayList<>();
 		Connection con1 = DataConnect.createC();
-		
-			Statement statement;
+		Statement statement;
 			try {
 				statement = con1.createStatement();
 				ResultSet result = statement.executeQuery(sql);
@@ -126,9 +118,10 @@ public class EmployeePayRollService {
 			} catch (SQLException e) {
 					e.printStackTrace();
 			}
-			
-    }
-	public Map<String, Double> avg_salary_Base_on_gender() {
+	 }
+	
+	public Map<String, Double> avg_salary_Base_on_gender()
+	{
 		String sql=" select gender, avg( basic_pay) as avg_basic_pay from employee_payrolls group by gender";
 		Map<String,Double> empAvg_salary = new HashMap<>();
 		Connection con1 = DataConnect.createC();
@@ -143,15 +136,16 @@ public class EmployeePayRollService {
 				   double basic_pay=result.getDouble("avg_basic_pay");
 				   empAvg_salary.put(gender,basic_pay);
 			   }
-		} catch (SQLException e) {
-				e.printStackTrace();
+		     } catch (SQLException e) {
+				  e.printStackTrace();
 		}
 		return  empAvg_salary;
 	}
 
-	private List<Employee> getEmployeeData(ResultSet result) {
-		List<Employee> list=new ArrayList<>();
-        try {
+	private List<Employee> getEmployeeData(ResultSet result)
+	{
+	    List<Employee> list=new ArrayList<>();
+            try {
 		   while( result.next())
 		   {
 			   int id=result.getInt("id");
@@ -160,17 +154,13 @@ public class EmployeePayRollService {
 			   double basic_pay=result.getDouble("basic_pay");
 			   LocalDate start=result.getDate("start").toLocalDate();
 			   list.add(new Employee(id,name,gender,basic_pay,start));
-			   		 
-		   }
+	            }
 		  
-	       } catch (SQLException e) {
+	     } catch (SQLException e) {
 		
 		e.printStackTrace();
 	}
 	  return list;
-		
 	}
 
-	
-	
 }
