@@ -11,11 +11,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class EmployeePayRollService {
+public class EmployeePayRollService
+{
 	
-	
-
-	public List<Employee> retriveData() 
+        public List<Employee> retriveData() 
 	{
 	  
 	   String sql="select * from employee_payrolls";
@@ -34,21 +33,20 @@ public class EmployeePayRollService {
 			   double basic_pay=result.getDouble("basic_pay");
 			   LocalDate start=result.getDate("start").toLocalDate();
 			   list.add(new Employee(id,name,gender,basic_pay,start));
-			   		 
-		   }
-		   con1.close();
-	} catch (SQLException e) {
+	           }
+		           con1.close();
+	       } catch (SQLException e) {
 		
 		e.printStackTrace();
 	}
 	  return list;
 	   
-	}
+}
 
 	public void update()
 	{
 		String sql="update employee_payrolls set basic_pay=700000 where name='charlie'";
-		 List< Employee> list=new ArrayList<>();
+		List< Employee> list=new ArrayList<>();
 		Connection con1 = DataConnect.createC();
 		try {
 			Statement statement=con1.createStatement();
@@ -57,10 +55,10 @@ public class EmployeePayRollService {
 			con1.close();
 		    } 
 		
-		catch (SQLException e) {
-			
+		 catch (SQLException e)
+		    {
 			e.printStackTrace();
-		}
+		    }
 		
 	}
 	
@@ -72,13 +70,14 @@ public class EmployeePayRollService {
 			PreparedStatement psmt=con1.prepareStatement(sql);
 			psmt.setString(1, name);
 			int result=psmt.executeUpdate();
-			if(result==1) {
+			if(result==1)
+			{
 				System.out.println("Update Succesfully!");
 			}
 		    } 
 		
-		catch (SQLException e) {
-			
+		catch (SQLException e)
+		{
 			e.printStackTrace();
 		}
 		
@@ -86,19 +85,19 @@ public class EmployeePayRollService {
 	public void retriveData_inBetween_Range()
 	{
 	    String sql=" select * from  employee_payrolls WHERE start BETWEEN CAST('2019-01-05' AS DATE) AND DATE(NOW())";
-		
-		List< Employee> list=new ArrayList<>();
-		Connection con1 = DataConnect.createC();
-		
-			Statement statement;
+	    List< Employee> list=new ArrayList<>();
+	    Connection con1 = DataConnect.createC();
+	    Statement statement;
 			try {
 				statement = con1.createStatement();
 				ResultSet result = statement.executeQuery(sql);
 				list=getEmployeeData(result);
 				System.out.println(list);
-			} catch (SQLException e) {
-					e.printStackTrace();
-			}
+			    }  
+		        catch (SQLException e)
+			    {
+				e.printStackTrace();
+			    }
 			
     }
 	public Map<String, Double> avg_salary_Base_on_gender() {
@@ -122,9 +121,10 @@ public class EmployeePayRollService {
 		return  empAvg_salary;
 	}
 
-	private List<Employee> getEmployeeData(ResultSet result) {
-		List<Employee> list=new ArrayList<>();
-        try {
+	private List<Employee> getEmployeeData(ResultSet result)
+	{
+             List<Employee> list=new ArrayList<>();
+             try {
 		   while( result.next())
 		   {
 			   int id=result.getInt("id");
@@ -136,12 +136,10 @@ public class EmployeePayRollService {
 			   		 
 		   }
 		  
-	       } catch (SQLException e) {
-		
-		e.printStackTrace();
-	}
-	  return list;
-		
+	         } catch (SQLException e) {
+	                   e.printStackTrace();
+	         }
+	         return list;
 	}
 
 	
