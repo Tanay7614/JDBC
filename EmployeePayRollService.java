@@ -11,16 +11,15 @@ import java.util.List;
 
 public class EmployeePayRollService {
 	
-	 List< Employee> list=new ArrayList<>();
-
-	public List<Employee> retriveData() 
-	{
+	 public List<Employee> retriveData() 
+	 {
 	  
 	   String sql="select * from employee_payrolls";
 	  
 	   try {
 		   Connection con1 = DataConnect.createC();
 		   Statement  statement=con1.createStatement();
+		   List< Employee> list=new ArrayList<>();
 		   ResultSet result=statement.executeQuery(sql);
 		  
 		   while( result.next())
@@ -33,14 +32,15 @@ public class EmployeePayRollService {
 			   list.add(new Employee(id,name,gender,basic_pay,start));
 			   		 
 		   }
-		   con1.close();
-	} catch (SQLException e) {
+		           con1.close();
+	       }           catch (SQLException e)
+	       {
 		
-		e.printStackTrace();
-	}
-	  return list;
+		           e.printStackTrace();
+	       }
+	                   return list;
 	   
-	}
+	 }
 
 	public void update()
 	{
@@ -49,7 +49,6 @@ public class EmployeePayRollService {
 		try {
 			Statement statement=con1.createStatement();
 			statement.executeUpdate(sql);
-			System.out.println(list);	
 			con1.close();
 		    } 
 		
@@ -97,9 +96,10 @@ public class EmployeePayRollService {
 			
     }
 
-	private List<Employee> getEmployeeData(ResultSet result) {
-		List<Employee> list=new ArrayList<>();
-         try {
+	private List<Employee> getEmployeeData(ResultSet result)
+	{
+	    List<Employee> list=new ArrayList<>();
+            try {
 		   while( result.next())
 		   {
 			   int id=result.getInt("id");
@@ -111,11 +111,11 @@ public class EmployeePayRollService {
 			   		 
 		   }
 		  
-	} catch (SQLException e) {
+	        } catch (SQLException e)
+	    {
 		
 		e.printStackTrace();
-	}
-	  return list;
-		
+	    }
+	        return list;
 	}
 }
